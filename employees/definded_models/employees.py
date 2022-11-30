@@ -1,4 +1,3 @@
-import uuid
 from djmoney.models.fields import MoneyField
 from django.db import models
 
@@ -6,7 +5,6 @@ from employees.definded_models.manager import CustomModelManager
 
 
 class EmployeeModel(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=512)
     employment_date = models.DateTimeField(auto_now_add=True, editable=False)
     salary = MoneyField(max_digits=14, decimal_places=2, default_currency="USD")
