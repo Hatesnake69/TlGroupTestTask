@@ -6,7 +6,7 @@ from employees.models import PositionModel, SubdivisionModel, EmployeeModel
 
 
 class Command(BaseCommand):
-    help = 'Displays current time'
+    help = "Displays current time"
 
     def handle(self, *args, **kwargs):
         positions_set = {
@@ -25,12 +25,13 @@ class Command(BaseCommand):
                 SubdivisionModel(
                     name=f"child_node_number{j}_of_{i}_layer",
                     description="child_node",
-                    parent=root_node
+                    parent=root_node,
                 ).save()
             root_node = SubdivisionModel(
                 name=f"child_node_number{4}_of_{i}_layer",
                 description="child_node",
-                parent=root_node)
+                parent=root_node,
+            )
             root_node.save()
 
         self.stdout.write(f"Всего подразделений: {len(SubdivisionModel.objects.all())}")
@@ -43,9 +44,12 @@ class Command(BaseCommand):
                 name=names.get_full_name(),
                 salary=random.randint(1000, 10000),
                 salary_currency="USD",
-                position=PositionModel.objects.all()[random.randint(0, positions_number-1)],
-                subdivision=SubdivisionModel.objects.all()[random.randint(0, subdivisions_number-1)],
+                position=PositionModel.objects.all()[
+                    random.randint(0, positions_number - 1)
+                ],
+                subdivision=SubdivisionModel.objects.all()[
+                    random.randint(0, subdivisions_number - 1)
+                ],
             ).save()
 
         self.stdout.write("data population complete")
-

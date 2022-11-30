@@ -14,4 +14,4 @@ class PositionModel(models.Model):
         managed = True
         db_table = "position"
         verbose_name_plural = "positions"
-        app_label = 'employees'
+        app_label = "employees"

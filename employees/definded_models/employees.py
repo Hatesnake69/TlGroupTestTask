@@ -9,7 +9,7 @@ class EmployeeModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=512)
     employment_date = models.DateTimeField(auto_now_add=True, editable=False)
-    salary = MoneyField(max_digits=14, decimal_places=2, default_currency='USD')
+    salary = MoneyField(max_digits=14, decimal_places=2, default_currency="USD")
     position = models.ForeignKey(
         to="employees.PositionModel", name="position", on_delete=models.CASCADE
     )
@@ -18,9 +18,8 @@ class EmployeeModel(models.Model):
     )
     objects = CustomModelManager()
 
-
     class Meta:
         managed = True
         db_table = "employee"
         verbose_name_plural = "Employees"
-        app_label = 'employees'
+        app_label = "employees"

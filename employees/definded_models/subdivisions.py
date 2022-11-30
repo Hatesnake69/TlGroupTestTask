@@ -9,8 +9,11 @@ class SubdivisionModel(models.Model):
     name = models.CharField(max_length=512)
     description = models.TextField()
     parent = models.ForeignKey(
-        to="employees.SubdivisionModel", name="parent", on_delete=models.CASCADE,
-        blank=True, null=True
+        to="employees.SubdivisionModel",
+        name="parent",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
     )
     objects = CustomModelManager()
 
@@ -18,4 +21,4 @@ class SubdivisionModel(models.Model):
         managed = True
         db_table = "subdivision"
         verbose_name_plural = "subdivisions"
-        app_label = 'employees'
+        app_label = "employees"

@@ -7,30 +7,43 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('employees', '0001_initial'),
+        ("employees", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='employeemodel',
-            name='position',
-            field=models.ForeignKey(default='', on_delete=django.db.models.deletion.CASCADE, to='employees.positionmodel'),
+            model_name="employeemodel",
+            name="position",
+            field=models.ForeignKey(
+                default="",
+                on_delete=django.db.models.deletion.CASCADE,
+                to="employees.positionmodel",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='employeemodel',
-            name='subdivision',
-            field=models.ForeignKey(default='', on_delete=django.db.models.deletion.CASCADE, to='employees.subdivisionmodel'),
+            model_name="employeemodel",
+            name="subdivision",
+            field=models.ForeignKey(
+                default="",
+                on_delete=django.db.models.deletion.CASCADE,
+                to="employees.subdivisionmodel",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='subdivisionmodel',
-            name='parent',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='employees.subdivisionmodel'),
+            model_name="subdivisionmodel",
+            name="parent",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="employees.subdivisionmodel",
+            ),
         ),
         migrations.AlterField(
-            model_name='positionmodel',
-            name='name',
+            model_name="positionmodel",
+            name="name",
             field=models.CharField(max_length=512, unique=True),
         ),
     ]
