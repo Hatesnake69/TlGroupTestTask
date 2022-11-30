@@ -1,7 +1,8 @@
 import uuid
 from djmoney.models.fields import MoneyField
-
 from django.db import models
+
+from employees.definded_models.manager import CustomModelManager
 
 
 class EmployeeModel(models.Model):
@@ -15,6 +16,8 @@ class EmployeeModel(models.Model):
     subdivision = models.ForeignKey(
         to="employees.SubdivisionModel", name="subdivision", on_delete=models.CASCADE
     )
+    objects = CustomModelManager()
+
 
     class Meta:
         managed = True
