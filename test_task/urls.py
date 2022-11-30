@@ -19,6 +19,6 @@ from employees.views import redirect_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('subdivision/', include('employees.urls')),
-    path('', redirect_view)
+    path("subdivision/", include("employees.urls")),
+    path("", redirect_view),
 ]

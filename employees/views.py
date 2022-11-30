@@ -35,5 +35,5 @@ def list_all_subdivision_elements(request, subdivision_id):
 
 
 def redirect_view(request):
-    response = redirect('/subdivision/')
+    response = redirect("/subdivision/")
     return response
