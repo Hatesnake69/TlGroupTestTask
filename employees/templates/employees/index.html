@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    {% if not root.parent_id %}
+        <a>{{ root.name }}</a>
+    {% else %}
+        <a href="/subdivision/{{ root.parent_id }}/">{{ root.name }}</a>
+    {% endif %}
+    <ul>
+    {% for subdivision in viewed_subdivisions %}
+        <li><a href="/subdivision/{{ subdivision.id }}/">{{ subdivision.name }}</a></li>
+    {% endfor %}
+    </ul>
+    <table>
+        <tr><th>Name</th><th>Salary</th><th>Employment Date</th><th>Position</th><th>Subdivision</th></tr>
+    {% for employee in viewed_employees %}
+        <tr><td>{{ employee.name }}</td><td>{{ employee.salary }}</td><td>{{ employee.employment_date }}</td><td>{{ employee.position }}</td><td>{{ employee.subdivision }}</td></tr>
+    {% endfor %}
+    </table>
+</body>
+</html>
