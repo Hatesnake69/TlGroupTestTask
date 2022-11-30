@@ -6,35 +6,41 @@ from employees.models import PositionModel, SubdivisionModel, EmployeeModel
 
 
 class Command(BaseCommand):
-    help = "Displays current time"
 
     def handle(self, *args, **kwargs):
+        self.stdout.write("data population begin")
         positions_set = {
             ("junior dev", "junior python backend developer"),
-            ("middle_dev", "middle python backend developer"),
-            ("team_lead", "senior python backend developer, team lead"),
-            ("project_manager", "project manager"),
-            ("tech_lead", "tech lead"),
+            ("middle dev", "middle python backend developer"),
+            ("team lead", "senior python backend developer, team lead"),
+            ("project manager", "project manager"),
+            ("tech lead", "tech lead"),
         }
         for elem in positions_set:
             PositionModel(name=elem[0], description=elem[1]).save()
-        root_node = SubdivisionModel(name="root_node", description="root_node")
+        root_node = SubdivisionModel(name="root division", description="description")
         root_node.save()
         for i in range(1, 6):
             for j in range(4):
-                SubdivisionModel(
-                    name=f"child_node_number{j}_of_{i}_layer",
-                    description="child_node",
+                sub_root_node = SubdivisionModel(
+                    name=f"child division number {j} of {i}layer",
+                    description="description",
                     parent=root_node,
-                ).save()
+                )
+                sub_root_node.save()
+                for k in range(3):
+                    SubdivisionModel(
+                        name=f"child sub division number {k} of {j} division",
+                        description="description",
+                        parent=sub_root_node,
+                    ).save()
             root_node = SubdivisionModel(
-                name=f"child_node_number{4}_of_{i}_layer",
-                description="child_node",
+                name=f"child division number 4 of {i}layer",
+                description="description",
                 parent=root_node,
             )
             root_node.save()
 
-        self.stdout.write(f"Всего подразделений: {len(SubdivisionModel.objects.all())}")
         subdivisions_number = len(SubdivisionModel.objects.all())
         positions_number = len(PositionModel.objects.all())
 
@@ -52,4 +58,4 @@ class Command(BaseCommand):
                 ],
             ).save()
 
-        self.stdout.write("data population complete")
+        self.stdout.write("data population completed")
