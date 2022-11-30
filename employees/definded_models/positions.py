@@ -10,6 +10,9 @@ class PositionModel(models.Model):
     description = models.TextField()
     objects = CustomModelManager()
 
+    def __str__(self):
+        return str(self.name)
+
     class Meta:
         managed = True
         db_table = "position"
