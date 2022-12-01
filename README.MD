@@ -24,7 +24,7 @@ migrate models
 
 load data
 
-    python manage.py loaddata db2.json
+    python manage.py loaddata db_fixtures.json
 
 run project
 
