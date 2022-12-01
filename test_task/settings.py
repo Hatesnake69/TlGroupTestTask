@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-osj)ob79u5@0c85$yn&^n5q^(5d8==lxgtvsc-+%=m$j#bj376
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -80,7 +80,7 @@ DATABASES = {
         "NAME": "postgres",
         "USER": "postgres",
         "PASSWORD": "postgres",
-        "HOST": "localhost",
+        "HOST": "db",
         "PORT": "5432",
     }
 }

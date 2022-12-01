@@ -6,7 +6,6 @@ from employees.models import PositionModel, SubdivisionModel, EmployeeModel
 
 
 class Command(BaseCommand):
-
     def handle(self, *args, **kwargs):
         self.stdout.write("data population begin")
         positions_set = {
